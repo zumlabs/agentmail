@@ -1,0 +1,4 @@
+# Copy to .dev.vars for local development (never commit the real file).
+# Any long random string works locally; use `openssl rand -hex 32` in production.
+TOKEN_PEPPER=dev-pepper-change-me
+ADMIN_TOKEN=dev-admin-token-change-me

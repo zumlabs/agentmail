@@ -1,0 +1,46 @@
+name: Bug report
+description: Something is broken or behaves unexpectedly
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not paste admin tokens, API keys, share links, or `.dev.vars` contents.
+        Report security issues privately via SECURITY.md instead.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Actual behavior, including the error code if the API returned one.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: input
+    id: route
+    attributes:
+      label: Endpoint or page
+      placeholder: POST /api/v1/mailboxes or /dashboard
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. create a mailbox with ...
+        2. send mail with ...
+        3. read /api/v1/messages/:id
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: local wrangler dev, Node 20.19, Chrome 156
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: `wrangler tail` output or browser console, with secrets removed.
+      render: shell

@@ -1,0 +1,32 @@
+[
+  { "group": "Public", "method": "GET", "path": "/api/v1/health", "auth": "none", "note": "liveness, version, request id" },
+  { "group": "Public", "method": "GET", "path": "/api/v1/domains", "auth": "none", "note": "active domains only" },
+
+  { "group": "Mailboxes", "method": "POST", "path": "/api/v1/mailboxes", "auth": "admin", "note": "create; returns the API key once" },
+  { "group": "Mailboxes", "method": "GET", "path": "/api/v1/mailboxes/:id", "auth": "api key / link", "note": "counts, expiry, accessUrl" },
+  { "group": "Mailboxes", "method": "PATCH", "path": "/api/v1/mailboxes/:id", "auth": "api key / link", "note": "label, ttl" },
+  { "group": "Mailboxes", "method": "DELETE", "path": "/api/v1/mailboxes/:id", "auth": "api key", "note": "mailbox, messages and blobs" },
+  { "group": "Mailboxes", "method": "POST", "path": "/api/v1/mailboxes/:id/rotate-token", "auth": "api key", "note": "new share link" },
+
+  { "group": "Messages", "method": "GET", "path": "/api/v1/mailboxes/:id/messages", "auth": "api key / link", "note": "list, cursor, since, unread, wait" },
+  { "group": "Messages", "method": "GET", "path": "/api/v1/messages/:id", "auth": "api key / link", "note": "full parsed JSON" },
+  { "group": "Messages", "method": "GET", "path": "/api/v1/messages/:id/raw", "auth": "api key / link", "note": "original RFC 822" },
+  { "group": "Messages", "method": "GET", "path": "/api/v1/messages/:id/attachments/:attachmentId", "auth": "api key / link", "note": "blob download" },
+  { "group": "Messages", "method": "POST", "path": "/api/v1/messages/:id/seen", "auth": "api key / link", "note": "mark read" },
+  { "group": "Messages", "method": "DELETE", "path": "/api/v1/messages/:id", "auth": "api key / link", "note": "message and blobs" },
+
+  { "group": "Admin", "method": "POST", "path": "/api/v1/admin/session", "auth": "admin token", "note": "exchange for a signed cookie" },
+  { "group": "Admin", "method": "GET", "path": "/api/v1/admin/session", "auth": "admin token / cookie", "note": "session check" },
+  { "group": "Admin", "method": "DELETE", "path": "/api/v1/admin/session", "auth": "none", "note": "clear the cookie" },
+  { "group": "Admin", "method": "GET", "path": "/api/v1/admin/mailboxes", "auth": "admin", "note": "list with counts, q/domain" },
+  { "group": "Admin", "method": "PATCH", "path": "/api/v1/admin/mailboxes/:id", "auth": "admin", "note": "label, ttl, status" },
+  { "group": "Admin", "method": "DELETE", "path": "/api/v1/admin/mailboxes/:id", "auth": "admin", "note": "mailbox and blobs" },
+  { "group": "Admin", "method": "POST", "path": "/api/v1/admin/mailboxes/:id/rotate-token", "auth": "admin", "note": "new share link" },
+  { "group": "Admin", "method": "POST", "path": "/api/v1/admin/mailboxes/:id/rotate-key", "auth": "admin", "note": "revoke key, return new one" },
+  { "group": "Admin", "method": "POST", "path": "/api/v1/admin/messages/:id/reparse", "auth": "admin", "note": "re-run parsing on stored raw MIME" },
+  { "group": "Admin", "method": "GET", "path": "/api/v1/admin/domains", "auth": "admin", "note": "list with mailbox counts" },
+  { "group": "Admin", "method": "POST", "path": "/api/v1/admin/domains", "auth": "admin", "note": "register a receiving domain" },
+  { "group": "Admin", "method": "PATCH", "path": "/api/v1/admin/domains/:domain", "auth": "admin", "note": "label, active" },
+  { "group": "Admin", "method": "DELETE", "path": "/api/v1/admin/domains/:domain", "auth": "admin", "note": "only while unused" },
+  { "group": "Admin", "method": "GET", "path": "/api/v1/admin/stats", "auth": "admin", "note": "totals and per-domain" }
+]

@@ -1,0 +1,38 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "agenmail-local",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-08-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "workers_dev": false,
+
+  // Static UI (built by `vite build` into dist/web).
+  // `/api/*` always hits the Worker; everything else is served from assets
+  // with SPA fallback so `/m/<token>` deep links work.
+  "assets": {
+    "directory": "./dist/web",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+
+  // Local D1/R2 bindings only; no public route or Cloudflare account resources.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "agenmail-local",
+      "database_id": "00000000-0000-4000-8000-000000000001",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [{ "binding": "MAIL", "bucket_name": "agenmail-local-mail" }],
+
+  // Purges only mailboxes created with an explicit ttl.
+  "triggers": { "crons": ["17 * * * *"] },
+
+  "vars": {
+    "PUBLIC_BASE_URL": "",
+    "PUBLIC_CREATE_ENABLED": "false"
+  }
+}

@@ -1,0 +1,29 @@
+From: GitHub <noreply@github.com>
+To: demo@mail.test
+Subject: Your verification code
+Message-ID: <sample-1@example.com>
+Date: Wed, 04 Nov 2026 09:00:00 +0000
+MIME-Version: 1.0
+Authentication-Results: mx.cloudflare.net; spf=pass smtp.mailfrom=github.com; dkim=pass header.d=github.com; dmarc=pass
+Content-Type: multipart/alternative; boundary="sample-boundary"
+
+--sample-boundary
+Content-Type: text/plain; charset="utf-8"
+
+Your verification code is 483920.
+
+Enter it to finish signing in. It expires in 10 minutes.
+
+https://github.com/settings/sessions
+
+--sample-boundary
+Content-Type: text/html; charset="utf-8"
+
+<html><body style="font-family:-apple-system,sans-serif">
+  <p>Your verification code is</p>
+  <p style="font-size:32px;font-weight:600;letter-spacing:6px">483920</p>
+  <p><a href="https://github.com/settings/sessions">Review your sessions</a></p>
+  <p style="color:#8e8e93;font-size:12px">If you did not request this, ignore the email.</p>
+</body></html>
+
+--sample-boundary--
